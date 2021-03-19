@@ -58,7 +58,7 @@ func (co *Coroutine) Resume(in ...interface{}) (error, []interface{}) {
 			defer func() {
 				co.state = Dead
 				if e := recover(); e != nil {
-					co.err = fmt.Errorf("%w", e)
+					co.err = fmt.Errorf("%v", e)
 					co.waitOut <- nil
 				}
 			}()
